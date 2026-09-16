@@ -5,10 +5,12 @@ var session = require('express-session')
 var ejs = require('ejs')
 var morgan = require('morgan')
 const fileUpload = require('express-fileupload');
+const helmet = require('helmet');
 var config = require('./config/server')
 
 //Initialize Express
 var app = express()
+app.use(helmet())
 require('./core/passport')(passport)
 app.use(express.static('public'))
 app.set('view engine','ejs')
